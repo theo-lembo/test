@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script defer src="js/login.js"></script>
+    <link href="css/login.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <div id="error"></div>
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="./img/login.png" id="icon" alt="User Icon" />
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" method="POST">
+                <input type="text" id="user" class="fadeIn second" placeholder="usuario">
+                <input type="password" id="password" class="fadeIn third" placeholder="contraseña">
+                <input type="submit" class="fadeIn fourth" onclick="start()">
+            </form>
+
+            <input type="submit" id="btnGoogle" onclick="onSignIn()" class="fadeIn fifth" value="Google+">
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                <a class="underlineHover" href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
