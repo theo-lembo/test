@@ -83,9 +83,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
     getJSONData(CATEGORIES_URL).then(function(resultObj) {
-        if (resultObj.status === "ok") {
-            sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
-        }
+        resultObj.status === "ok" ? sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data) : console.log(resultObj.status);
     });
 
     document.getElementById("sortAsc").addEventListener("click", function() {

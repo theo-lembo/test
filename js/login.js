@@ -1,12 +1,13 @@
 const usuario = document.getElementById("user");
-const pass = document.getElementById('password');
-const form = document.getElementById('login-form');
-const errorMSG = document.getElementById('error');
+const pass = document.getElementById("password");
+const form = document.getElementById("login-form");
+const errorMSG = document.getElementById("error");
+var clicker = false;
 
 form.addEventListener('submit', (e) => {
-    let messages = [];
     e.preventDefault();
-    var clave = pass.value;
+    let messages = [];
+    let clave = pass.value;
     if (usuario.value === '' || usuario.value == null) {
         messages.push('Ingrese Usuario')
     }
@@ -15,21 +16,32 @@ form.addEventListener('submit', (e) => {
         messages.push("La contraseña debe contener entre 6 y 8");
     }
     if (messages.length > 0) {
-        errorMSG.innerText = messages.join(', ');
+        document.getElementById("error").innerText = messages.join(', ');
         messages = null;
     } else {
+        guardarUser(usuario.value);
         location.href = "inicio.html";
     }
 });
 
+function guardarUser(user) {
+    localStorage.setItem("user", user);
+}
+
+//"preventDefault" para evitar el logueo automatico de google.
+function google() {
+    clicker = true;
+}
+
 function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    if (profile.getEmail() != "") {
-        var myKeyVals = { token: googleUser.getAuthResponse().id_token }
+    if (clicker) {
+        let profile = googleUser.getBasicProfile();
+        //console.log(profile.getEmail())
+        if (profile.getEmail() != "") {
+            guardarUser(profile.getName());
+        }
+        location.href = "inicio.html";
     }
-    //console.log(myKeyVals.token)
-    //alert(myKeyVals.token)
-    location.href = "inicio.html";
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de

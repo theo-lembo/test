@@ -207,3 +207,12 @@ a.custom-card:hover {
     display: inline-block;
     font-size: 100%;
 }
+
+.dropdown-menu {
+    min-width: 0;
+    background-color: #343a40;
+}
+
+#prod-list-container {
+    display: block;
+}

@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="997016277164-6g2218jlkenm11m6tkpj3d424i9gcf6k.apps.googleusercontent.com">
+    <meta name="google-signin-scope" content="profile email">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <meta name="google-signin-client_id" content=clave_google+ '.apps.googleusercontent.com'>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script defer src="js/login.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="css/login.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/favicon.png" />
+
     <title>Login</title>
 </head>
 
@@ -33,15 +36,15 @@
                 <input type="submit" class="fadeIn fourth" value="Acceder">
             </form>
 
-            <button class="g-signin2" id="onSignIn">Acceder</button>
+            <button class="g-signin2" onclick="google()" data-onsuccess="onSignIn">Acceder</button>
             <!-- Remind Passowrd -->
             <div id="formFooter">
                 <a class="underlineHover" href="#">¿Olvidaste tu contraseña?</a>
             </div>
-
         </div>
     </div>
 
+    <script src="js/login.js"></script>
 </body>
 
 </html>

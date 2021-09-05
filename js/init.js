@@ -40,6 +40,15 @@ var getJSONData = function(url) {
         });
 }
 
+function returnUser() {
+    let user = localStorage.getItem("user");
+    //console.log(user);
+    if (user != undefined && user != "") {
+        return user
+    }
+    location.href = "index.html"
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -48,24 +57,31 @@ document.addEventListener("DOMContentLoaded", function(e) {
     document.head.innerHTML += icon;
     let navBar = "";
     navBar = `
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <button class="py-2 d-none d-md-inline-block" id="buttonCustom" onclick="tryA()">LogOut</button>
-    </div>`;
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
+            <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+            <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+            <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+            <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ` + returnUser() + `</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <button class="py-2 d-none d-md-inline-block" id="buttonCustom" onclick="tryA()">LogOut</button>
+                </div>
+            </div>
+        </div>`;
     document.getElementById("navBar").innerHTML = navBar;
 });
 
-//Posiblemente pase a Node.js para no trancarme con el logout de google.
+//Logout function
 function tryA() {
+    localStorage.removeItem("user");
     location.href = "index.html";
 }
 
 /*const tryA = async() => {
     const response = await fetch('https://oauth2.googleapis.com/revoke?token=');
     const myJson = await response.json();
-
+    
 }*/
