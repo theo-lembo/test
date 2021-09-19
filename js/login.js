@@ -26,6 +26,7 @@ form.addEventListener('submit', (e) => {
 
 function guardarUser(user) {
     localStorage.setItem("user", user);
+    document.cookie = "username=" + user + "; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/";
 }
 
 //"preventDefault" para evitar el logueo automatico de google.
@@ -44,7 +45,21 @@ function onSignIn(googleUser) {
     }
 }
 
+function googleKey() {
+    alert("El siguiente msj va a solicitar la key")
+    let key = prompt("Google Key hint: 9-k");
+    return key;
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e) {});
+document.addEventListener("DOMContentLoaded", function(e) {
+    let yes = 0;
+    yes = prompt("Ingrese 1 para Ingresar con Google")
+    if (yes === "1") {
+        document.head.innerHTML += `
+        <meta name="google-signin-client_id" content="` + googleKey() + `.apps.googleusercontent.com">
+        <meta name="google-signin-scope" content="profile email">`;
+    }
+});

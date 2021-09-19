@@ -1,11 +1,11 @@
-const CATEGORIES_URL = "https://japdevdep.github.io/ecommerce-api/category/all.json";
-const PUBLISH_PRODUCT_URL = "https://japdevdep.github.io/ecommerce-api/product/publish.json";
-const CATEGORY_INFO_URL = "https://japdevdep.github.io/ecommerce-api/category/1234.json";
-const PRODUCTS_URL = "https://japdevdep.github.io/ecommerce-api/product/all.json";
-const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678.json";
-const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
-const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
-const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
+const CATEGORIES_URL = "https://theo-lembo.github.io/json/category/categories.json";
+const CATEGORY_INFO_URL = "https://theo-lembo.github.io/json/category/catInfo.json";
+const PUBLISH_PRODUCT_URL = "https://theo-lembo.github.io/json/product/publishProd.json";
+const PRODUCTS_URL = "https://theo-lembo.github.io/json/product/prods.json";
+const PRODUCT_INFO_URL = "https://theo-lembo.github.io/json/product/prodsInfo.json";
+const PRODUCT_INFO_COMMENTS_URL = "https://theo-lembo.github.io/json/product/prodsComments.json";
+const CART_INFO_URL = "https://theo-lembo.github.io/json/cart/cartInfo.json";
+const CART_BUY_URL = "https://theo-lembo.github.io/json/cart/buyMsg.json";
 
 var showSpinner = function() {
     document.getElementById("spinner-wrapper").style.display = "block";
@@ -58,30 +58,49 @@ document.addEventListener("DOMContentLoaded", function(e) {
     let navBar = "";
     navBar = `
         <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-            <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-            <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-            <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-            <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-            <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ` + returnUser() + `</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <button class="py-2 d-none d-md-inline-block" id="buttonCustom" onclick="tryA()">LogOut</button>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link d-md-inline-block " href="inicio.html">Inicio</a>
+                        </li>      
+                        <li class="nav-item active">
+                            <a class="nav-link" href="categories.html">Categorías</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="products.html">Productos
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="sell.html">Vender</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ` + returnUser() + `</a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+                                <button class="dropdown-item" id="buttonCustom" onclick="shopCart()">Mi carrito</button>
+                                <button class="dropdown-item" id="buttonCustom" onclick="logOut()">Cerrar sesión</button>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            </nav>
         </div>`;
     document.getElementById("navBar").innerHTML = navBar;
 });
 
+function shopCart() {
+    location.href = "cart.html";
+}
+
 //Logout function
-function tryA() {
+function logOut() {
+    document.cookie = "username=" + returnUser() + "; expires=Thu, 18 Dec 2020 12:00:00 UTC; path=/";
     localStorage.removeItem("user");
     location.href = "index.html";
 }
-
-/*const tryA = async() => {
-    const response = await fetch('https://oauth2.googleapis.com/revoke?token=');
-    const myJson = await response.json();
-    
-}*/

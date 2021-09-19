@@ -51,7 +51,7 @@ function showProductsList() {
         if (((minCost == undefined) || (minCost != undefined && parseInt(producto.cost) >= minCost)) &&
             ((maxCost == undefined) || (maxCost != undefined && parseInt(producto.cost) <= maxCost))) {
             htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action">
+            <a class="list-group-item list-group-item-action" href="product-info.html">
                 <div class="row">
                     <div class="col-3">
                     <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
@@ -65,7 +65,7 @@ function showProductsList() {
                         <p class="mb-1">` + producto.description + ` </p>
                     </div>
                 </div>
-            </div>`
+            </a>`
         }
     }
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;

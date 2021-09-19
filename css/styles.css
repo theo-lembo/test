@@ -211,8 +211,184 @@ a.custom-card:hover {
 .dropdown-menu {
     min-width: 0;
     background-color: #343a40;
+    border: 0px;
 }
 
 #prod-list-container {
     display: block;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.carousel {
+    width: 50%;
+    height: 50%;
+    box-sizing: border-box;
+    position: relative;
+    margin: 1rem -15px 0;
+    border: solid #f8f9fa;
+}
+
+@media (min-width: 576px) {
+    .carousel {
+        padding: 1.5rem;
+        margin-right: 0;
+        margin-left: 0;
+        border-width: .2rem;
+    }
+}
+
+.star-ratings {
+    unicode-bidi: bidi-override;
+    color: #ccc;
+    font-size: 200%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.fill-ratings {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+span {
+    display: inline-block;
+}
+
+.empty-ratings {
+    padding: 0;
+    display: block;
+    z-index: 0;
+}
+
+#prod-info-container {
+    font-family: sans-serif;
+}
+
+#prodHyper {
+    font-size: initial;
+    color: #212529;
+    text-decoration: none;
+}
+
+#prodInfo {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#prodInfo,
+#prodInfoComplete {
+    width: 175%;
+}
+
+
+/* Star style from product-info */
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate:not(:checked)>input {
+    position: absolute;
+    visibility: hidden;
+}
+
+.rate:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.rate>input:checked~label {
+    color: #e7711b;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: #e7711b;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+    color: #e7711b;
+}
+
+.card-header div {
+    display: inline;
+}
+
+.card-header p {
+    float: right;
+}
+
+input[type=button] {
+    background-color: #56baed;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+    box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.container #firstView {
+    justify-content: center;
+}
+
+textarea#text {
+    height: 50%;
+    width: 75%;
+}
+
+div#containerMsgs {
+    width: 75%;
+}
+
+@media screen and (min-width: 601px) {
+    p#prodInfo {
+        font-size: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    p#prodInfo {
+        width: auto;
+        font-size: 100%;
+    }
 }
