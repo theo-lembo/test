@@ -101,8 +101,7 @@ function widthStars() {
     $(document).ready(function() {
         // Gets the span width of the filled-stars
         var starRaiting = $('.fill-ratings span').width();
-        console.log(starRaiting)
-            //console.log(starRaiting);
+        //console.log(starRaiting);
         $('.star-ratings').width(starRaiting);
     });
 }
@@ -112,12 +111,14 @@ function generalDescription() {
     for (let i = 0; i < betterMsg.length; i++) {
         starCount += parseInt(betterMsg[i].score);
     }
+    //console.log(starCount + " " + betterMsg.length)
     starCount = (starCount / betterMsg.length) * 20;
     //console.log(starCount)
     prodInfoContainer = `<h3>` + productInfo.name + `</h3><br>
-    <h4>` + productInfo.currency + " " + productInfo.cost + `</h4><hr class="my-1">
+    <hr class="my-1">
     <p id="prodCat" class="text-muted">Vendidos: ` + productInfo.soldCount + `<p>
     <hr class="my-1">
+    <h4>` + productInfo.currency + " " + productInfo.cost + `</h4><hr class="my-1">
         <div class="star-ratings" href="#comments">
             <div class="fill-ratings" style="width: ` + starCount + `%;">
             <span>★★★★★</span>
@@ -130,6 +131,7 @@ function generalDescription() {
         <hr class="my-1"><br>
         <a id="prodHyper" href="#prod-description">
         <p id="prodCat" class="text-muted">Categoría: ` + productInfo.category + `<p>
+        <hr class="my-1">
             <p id="prodInfo">
             ` + "Descripción:<br>" + productInfo.description + `
             </p>
@@ -246,7 +248,7 @@ function showMsgList() {
     let scoreI = 0;
     for (let i = 0; i < betterMsg.length; i++) {
         datePost = betterMsg[i].date.slice(8, 10) + "/" + betterMsg[i].date.slice(5, 7) + "/" + betterMsg[i].date.slice(0, 4) + ` ` + betterMsg[i].hour;
-        scoreI = betterMsg[i].score * 20;
+        scoreI = betterMsg[i].score * 24.6;
         //console.log(scoreI)
         comments += `
         <div class="card">
