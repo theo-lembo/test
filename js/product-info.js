@@ -418,10 +418,10 @@ function errorLoad(errorStatus, sender) {
             console.log(errorStatus + " Comentarios");
             break;
         case 2:
-            console.log(resultObj.status + " Producto")
+            console.log(errorStatus + " Producto")
             break;
         case 3:
-            console.log(resultObj.status + " Relacionados")
+            console.log(errorStatus + " Relacionados")
             break;
     }
 }
