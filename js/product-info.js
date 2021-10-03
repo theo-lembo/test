@@ -1,9 +1,13 @@
-var productInfo = [];
-var userComments = [];
-var betterMsg = [];
-var starCount = 0;
-var score = 0;
-var htmlContentToAppend, htmlContentToAppendBellow, prodInfoContainer = ``
+var productInfo = [],
+    userComments = [],
+    betterMsg = [],
+    related = [],
+    relatedList = [];
+var starCount = 0,
+    score = 0;
+var htmlContentToAppend = ``,
+    htmlContentToAppendBellow = ``,
+    prodInfoContainer = ``;
 var currentDate, currentDateT, hour, txt, date;
 
 //receive array of img routes and make appears on Carousel
@@ -54,6 +58,7 @@ function showCarousel(array) {
 
 
 function showInfo() {
+    related = productInfo.relatedProducts;
     document.getElementById("selected").innerHTML = productInfo.name;
 
     betterManipulation();
@@ -179,19 +184,40 @@ function orderDate() {
     betterMsg = betterMsg.reverse();
 }
 
+/*----------------------------Related Prods-------------------------------*/
+
+function relatedPublish() {
+    htmlContentToAppend = "<h3>Productos relacionados</h3><div class=" + 'row' + " id=" + 'prod-list-container' + "><a href=product-info.html>";
+    for (let i = 0; i < related.length; i++) {
+        htmlContentToAppend += `
+                <div class="column"> 
+                    <div class="card list-group-item-action">
+                        <img src=` + relatedList[related[i]].imgSrc + ` alt=` + relatedList[related[i]].name + `>
+                        <div class="container">
+                            <h5><b>` + relatedList[related[i]].name + `</b></h5>
+                            <small class="text-muted">` + relatedList[related[i]].soldCount + ` vendidos</small>
+                            <p>` + relatedList[related[i]].description + `</p>
+                            <h6><b>` + " " + relatedList[related[i]].currency + "  " + relatedList[related[i]].cost + `</b></h6>
+                        </div>
+                    </div>
+                </div>
+                `
+    }
+    document.getElementById("related").innerHTML = htmlContentToAppend + "</div>";
+}
+
 /*----------------------------Publish msg---------------------------------*/
 
 function waiterMsg() {
     let x = document.querySelectorAll('input[type=radio]');
     for (let i = 0; i < x.length; i++) {
-        //console.log(x[i].checked + " " + i)
+
         if (x[i].checked) {
             score = 5 - i;
         }
     }
-    //console.log(score)
     txt = document.getElementById("text").value;
-    //console.log(txt);
+
     (((txt === "") || (txt === null) || (txt === undefined)) && (score === 0)) ? alert("Favor de completar 1 de los 2 campos."): msgPublishCustom();
 }
 
@@ -251,7 +277,7 @@ function showMsgList() {
         scoreI = betterMsg[i].score * 24.6;
         //console.log(scoreI)
         comments += `
-        <div class="card">
+        <div class="card" style="display: none;">
             <h5 class="card-header"><div>` + betterMsg[i].user + `<p class="text-muted"> ` + datePost + `</p></h5>
             <div class="card-body">
                 <h5 class="card-title">
@@ -268,9 +294,136 @@ function showMsgList() {
         </div><br>
         `
     }
-    comments += `</div>`;
+    comments += `</div>
+    <div id="moreLess">
+        <input id="moreButton" type="button" value="Ver más" onclick="showMore()">
+        <input id="lessButton" type="button" value="Ver menos" onclick="showLess()">
+    </div>`;
     document.getElementById("containerMsgs").innerHTML = "";
     document.getElementById("containerMsgs").insertAdjacentHTML("afterbegin", comments);
+    initialLoads();
+}
+
+/*----------------------------Loading or Hidding msgs----------------------------*/
+
+var msgList = [],
+    msgListHide = [],
+    list = [],
+    items = [];
+
+function initialLoads() {
+    msgListHide = Array.prototype.slice.call(document.querySelectorAll('#containerMsgs div.card'));
+    msgList = Array.prototype.slice.call(document.querySelectorAll('#containerMsgs div.card'));
+    list = Array.prototype.slice.call(document.querySelectorAll("#containerMsgs div.card"));
+    showMoreInitial();
+}
+
+function showMore() {
+    msgList = [];
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].style.display == "none") {
+            msgList[i] = list[i]
+        }
+    }
+    removeEmpty(msgList);
+    showMoreInitial();
+}
+
+function showMoreInitial() {
+    itemsRange();
+    for (let i = 0; i < items.length; i++) {
+        items[i].style.display = "block";
+    }
+    visibilityButtons();
+}
+
+function showLess() {
+    let hide = hideItems();
+    for (let i = 0; i < hide.length; i++) {
+        hide[i].style.display = "none";
+    }
+    visibilityButtons();
+}
+
+function hideItems() {
+    let itemsHide = [];
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].style.display == "block") {
+            itemsHide[i] = list[i];
+        }
+    }
+    return itemsHide;
+}
+
+function itemsRange() {
+    let max = 0;
+    items = [];
+    (msgList.length % 2 == 0) ? max = msgList.length / 2: max = (msgList.length - 1) / 2;
+    items = msgList.slice(0, max);
+
+}
+
+function visibilityButtons() {
+    let temp = [];
+
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].style.display == "block") {
+            temp[i] = list[i]
+        }
+    }
+
+    if (temp.length == list.length) {
+        document.getElementById('moreButton').style.display = "none";
+    } else {
+        if (temp.length >= 0) {
+            document.getElementById('moreButton').style.display = "block";
+        }
+    }
+
+    if (temp.length != 0) {
+        document.getElementById('lessButton').style.display = "block";
+    } else {
+        if (temp.length <= 2) {
+            document.getElementById('lessButton').style.display = "none";
+        }
+    }
+}
+
+function removeEmpty(listItems) {
+    listItems.sort();
+    for (let i = 0; i < listItems.length + 1; i++) {
+        ((listItems[i] === undefined) || (listItems[i] == null) || (listItems[i] == "")) ? listItems.pop(): "";
+    }
+}
+
+/*------------------------Initial Load------------------------*/
+
+function prodInfoURL() {
+    getJSONData(PRODUCT_INFO_URL).then(function(resultObj) {
+        resultObj.status === "ok" ? (productInfo = resultObj.data, showCarousel(productInfo.images), showInfo(),
+                relatedPublish()) :
+            errorLoad(resultObj.status, 2);
+    })
+}
+
+function prodsCharge() {
+    getJSONData(PRODUCTS_URL).then(function(resultObj) {
+        resultObj.status === "ok" ? (relatedList = resultObj.data) : errorLoad(resultObj.status, 3);
+    });
+}
+
+function errorLoad(errorStatus, sender) {
+    switch (sender) {
+        case 1:
+            console.log(errorStatus + " Comentarios");
+            break;
+        case 2:
+            console.log(resultObj.status + " Producto")
+            break;
+        case 3:
+            console.log(resultObj.status + " Relacionados")
+            break;
+    }
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -278,11 +431,7 @@ function showMsgList() {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) {
-        resultObj.status === "ok" ? userComments = resultObj.data : console.log(resultObj.status + " Comentarios");
-    })
-
-    getJSONData(PRODUCT_INFO_URL).then(function(resultObj) {
-        resultObj.status === "ok" ? (productInfo = resultObj.data, showCarousel(productInfo.images), showInfo()) :
-            console.log(resultObj.status + "Producto");
+        resultObj.status === "ok" ? (userComments = resultObj.data, prodsCharge(), prodInfoURL()) :
+            errorLoad(resultObj.status, 1);
     })
 });

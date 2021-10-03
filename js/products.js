@@ -27,6 +27,7 @@ function showProductsCard() {
             ((maxCost == undefined) || (maxCost != undefined && parseInt(producto.cost) <= maxCost))) {
             htmlContentToAppend += `
                 <div class="column"> 
+                <a class="list-group-item list-group-item-action" href="product-info.html">
                     <div class="card list-group-item-action">
                         <img src=` + producto.imgSrc + ` alt=` + producto.name + `>
                         <div class="container">
@@ -36,6 +37,7 @@ function showProductsCard() {
                             <h6><b>` + " " + producto.currency + "  " + producto.cost + `</b></h6>
                         </div>
                     </div>
+                    </a>
                 </div>
                 `
         }

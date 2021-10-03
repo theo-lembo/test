@@ -392,3 +392,7 @@ div#containerMsgs {
         font-size: 100%;
     }
 }
+
+div#moreLess {
+    text-align: -webkit-center;
+}
