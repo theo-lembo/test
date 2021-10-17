@@ -396,3 +396,7 @@ div#containerMsgs {
 div#moreLess {
     text-align: -webkit-center;
 }
+
+div#alignShipping {
+    text-align-last: justify;
+}

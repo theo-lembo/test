@@ -5,6 +5,7 @@ const PRODUCTS_URL = "https://theo-lembo.github.io/json/product/prods.json";
 const PRODUCT_INFO_URL = "https://theo-lembo.github.io/json/product/prodsInfo.json";
 const PRODUCT_INFO_COMMENTS_URL = "https://theo-lembo.github.io/json/product/prodsComments.json";
 const CART_INFO_URL = "https://theo-lembo.github.io/json/cart/cartInfo.json";
+const CART_INFO2_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
 const CART_BUY_URL = "https://theo-lembo.github.io/json/cart/buyMsg.json";
 
 var showSpinner = function() {

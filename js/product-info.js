@@ -139,8 +139,7 @@ function generalDescription() {
         <hr class="my-1">
             <p id="prodInfo">
             ` + "Descripción:<br>" + productInfo.description + `
-            </p>
-        <a>`;
+            </p>`;
     document.getElementById("prod-info-container").innerHTML = prodInfoContainer;
 }
 
