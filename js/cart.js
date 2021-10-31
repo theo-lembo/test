@@ -53,6 +53,13 @@ function customQuantity() {
     let quantityList = generalList('#quantity');
 
     for (let i = 0; i < quantityList.length; i++) {
+        quantityList[i].addEventListener('click', ({ target }) => {
+            generalList("#currency")[i].innerHTML = " " + (generalList("#unitCost")[i].innerHTML * target.value);
+            subtotalF();
+        })
+    }
+
+    for (let i = 0; i < quantityList.length; i++) {
         quantityList[i].addEventListener('keyup', ({ target }) => {
             generalList("#currency")[i].innerHTML = " " + (generalList("#unitCost")[i].innerHTML * target.value);
             subtotalF();
@@ -101,7 +108,7 @@ checkboxList.forEach(function(checkbox) {
             .filter(i => i.checked ? shipping = i.value : "");
         tempShipping = shippingVarF();
         totalF();
-        document.getElementById("shipping").innerText = " " + tempShipping;
+        document.getElementById("shipping").innerText = "$ " + tempShipping;
     })
     tempSubtotal = 0;
 });

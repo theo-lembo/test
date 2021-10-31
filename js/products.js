@@ -19,26 +19,28 @@ function customButton() {
 }
 
 function showProductsCard() {
-    verificador = 1;
+    verificador = 2;
     let htmlContentToAppend = "";
     for (let i = 0; i < arrayProds.length; i++) {
         let producto = arrayProds[i];
         if (((minCost == undefined) || (minCost != undefined && parseInt(producto.cost) >= minCost)) &&
             ((maxCost == undefined) || (maxCost != undefined && parseInt(producto.cost) <= maxCost))) {
             htmlContentToAppend += `
-                <div class="column"> 
-                <a class="list-group-item list-group-item-action" href="product-info.html">
-                    <div class="card list-group-item-action">
-                        <img src=` + producto.imgSrc + ` alt=` + producto.name + `>
-                        <div class="container">
-                            <h5><b>` + producto.name + `</b></h5>
-                            <small class="text-muted">` + producto.soldCount + ` vendidos</small>
-                            <p>` + producto.description + `</p>
-                            <h6><b>` + " " + producto.currency + "  " + producto.cost + `</b></h6>
-                        </div>
+                <a class="col-md-4 list-group-item list-group-item-action" href="product-info.html">
+                
+                <div class="card mb-4 shadow-sm">
+                    <img src=` + producto.imgSrc + ` alt=` + producto.name + ` class="bd-placeholder-img card-img-top"
+                     width="100%" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                     aria-label="Placeholder: Thumbnail">
+
+                    <div class="card-body">
+                        <h5><b>` + producto.name + `</b></h5>
+                        <small class="text-muted">` + producto.soldCount + ` vendidos</small>
+                        <p>` + producto.description + `</p>
+                        <h6><b>` + " " + producto.currency + "  " + producto.cost + `</b></h6>
                     </div>
-                    </a>
                 </div>
+            </a>
                 `
         }
     }
@@ -46,7 +48,7 @@ function showProductsCard() {
 }
 
 function showProductsList() {
-    verificador = 2;
+    verificador = 1;
     let htmlContentToAppend = "";
     for (let i = 0; i < arrayProds.length; i++) {
         let producto = arrayProds[i];
@@ -55,8 +57,8 @@ function showProductsList() {
             htmlContentToAppend += `
             <a class="list-group-item list-group-item-action" href="product-info.html">
                 <div class="row">
-                    <div class="col-3">
-                    <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
+                    <div class="col-sm-4">
+                        <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
@@ -75,11 +77,11 @@ function showProductsList() {
 
 //Función para hacer el cambio de Lista a Cards, de paso uso el if raro (codicion ? res1 : res2) que ahorra yema de dedos.
 function verifica() {
-    verificador == 1 ? showProductsList() : showProductsCard();
+    verificador == 2 ? showProductsList() : showProductsCard();
 }
 
 function mantiene() {
-    verificador != 1 ? showProductsList() : showProductsCard();
+    verificador != 2 ? showProductsList() : showProductsCard();
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de

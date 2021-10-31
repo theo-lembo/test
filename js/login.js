@@ -2,7 +2,8 @@ const usuario = document.getElementById("user");
 const pass = document.getElementById("password");
 const form = document.getElementById("login-form");
 const errorMSG = document.getElementById("error");
-var clicker = false;
+var clicker = false,
+    gUser = {};
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -11,7 +12,7 @@ form.addEventListener('submit', (e) => {
     if (usuario.value === '' || usuario.value == null) {
         messages.push('Ingrese Usuario')
     }
-    console.log(clave.length + " " + clave)
+
     if (((clave.length == 0) || (clave.length < 6) || (clave.length > 8))) {
         messages.push("La contraseña debe contener entre 6 y 8");
     }
@@ -26,6 +27,7 @@ form.addEventListener('submit', (e) => {
 
 function guardarUser(user) {
     localStorage.setItem("user", user);
+    clicker ? (localStorage.setItem("gUserLog", JSON.stringify(gUser))) : "";
     document.cookie = "username=" + user + "; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/";
 }
 
@@ -36,9 +38,19 @@ function google() {
 
 function onSignIn(googleUser) {
     if (clicker) {
-        let profile = googleUser.getBasicProfile();
-        //console.log(profile.getEmail())
+        let profile = googleUser.getBasicProfile(),
+            fNameGoogle = profile.getGivenName(),
+            lNameGoogle = profile.getFamilyName(),
+            photoSrc = profile.getImageUrl(),
+            mail = profile.getEmail();
         if (profile.getEmail() != "") {
+            //alert(profile.getImageUrl())
+            gUser = {
+                "name": fNameGoogle,
+                "lName": lNameGoogle,
+                "photoSrc": photoSrc,
+                "mail": mail
+            }
             guardarUser(profile.getName());
         }
         location.href = "inicio.html";

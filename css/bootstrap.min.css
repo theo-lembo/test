@@ -5594,11 +5594,10 @@ a.badge-dark:focus {
 
 .list-group-item {
     position: relative;
-    display: block;
     padding: .75rem 1.25rem;
     margin-bottom: -1px;
     background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, .125)
+    border: 0px solid rgba(0, 0, 0, 0)
 }
 
 .list-group-item:first-child {
@@ -10263,8 +10262,8 @@ a.text-dark:hover {
 
 @media print {
     *,
-    ::after,
-    ::before {
+     ::after,
+     ::before {
         text-shadow: none!important;
         box-shadow: none!important
     }

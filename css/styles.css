@@ -214,10 +214,6 @@ a.custom-card:hover {
     border: 0px;
 }
 
-#prod-list-container {
-    display: block;
-}
-
 .img-fluid {
     max-width: 100%;
     height: auto;
@@ -400,3 +396,22 @@ div#moreLess {
 div#alignShipping {
     text-align-last: justify;
 }
+
+#profile-info {
+    text-align: center;
+}
+
+div.col-sm-12 {
+    margin-bottom: 1%;
+}
+
+ul.navbar-nav {
+    margin-right: 7%;
+}
+
+
+/*
+#prod-list-container {
+    display: block;
+}
+*/
