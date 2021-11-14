@@ -7,6 +7,7 @@ const PRODUCT_INFO_COMMENTS_URL = "https://theo-lembo.github.io/json/product/pro
 const CART_INFO_URL = "https://theo-lembo.github.io/json/cart/cartInfo.json";
 const CART_INFO2_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
 const CART_BUY_URL = "https://theo-lembo.github.io/json/cart/buyMsg.json";
+const COUNTRY_LIST = "https://theo-lembo.github.io/json/country/countryList.json";
 
 var showSpinner = function() {
     document.getElementById("spinner-wrapper").style.display = "block";
@@ -126,6 +127,12 @@ function profile() {
 //Logout function
 function logOut() {
     document.cookie = "username=" + returnUser() + "; expires=Thu, 18 Dec 2020 12:00:00 UTC; path=/";
+<<<<<<< Updated upstream
     localStorage.clear();
+=======
+    localStorage.removeItem("user");
+    localStorage.removeItem("userProfile");
+    localStorage.removeItem("gUserLog");
+>>>>>>> Stashed changes
     location.href = "index.html";
 }

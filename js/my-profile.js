@@ -62,11 +62,20 @@ function saveUserData() {
         "age": age.value,
         "mail": mail.value,
         "photoSrc": getIconUrl(document.getElementById("photoSrc").value),
+<<<<<<< Updated upstream
         "phone": phone.value,
     }
     localStorage.setItem("userProfile", JSON.stringify(user));
     profileEdit();
     localStorage.removeItem("gUserLog");
+=======
+        "phone": phone.value
+    };
+    localStorage.setItem("userProfile", JSON.stringify(user));
+    profileEdit();
+    localStorage.removeItem("gUserLog");
+    listOfUsers();
+>>>>>>> Stashed changes
     location.reload();
 }
 
@@ -116,7 +125,10 @@ function userFill() {
     mail.value = uMail;
     phone.value = uPhone;
     photo.value = uPhotoSrc;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }
 /*------------------------------------------Change url of getavataaars.com------------------------------------------*/
 
@@ -125,10 +137,56 @@ function getIconUrl(src) {
 
     (src.slice(0, 24) === "https://getavataaars.com") ?
 
+<<<<<<< Updated upstream
     temp = src.replace("https://getavataaars.com", "https://avataaars.io"): "";
     return temp;
 }
 
+=======
+    temp = src.replace("https://getavataaars.com", "https://avataaars.io"): temp = src;
+    return temp;
+}
+
+/*----------------------------------Make a list of users----------------------------------*/
+
+function listOfUsers() {
+    tmpUser = localStorage.getItem("user");
+    tmpProfile = JSON.parse(localStorage.getItem("userProfile"));
+    listUsers = JSON.parse(localStorage.getItem("userList"));
+
+    if (listUsers === null) {
+        makeNewOne(tmpUser, tmpProfile);
+    } else {
+        exist = existence(tmpUser, listUsers);
+        exist != undefined ? ("",
+                makeNewOne(tmpUser, tmpProfile)) :
+            makeNewOne(tmpUser, tmpProfile);
+    }
+
+}
+
+function existence(tmpUser, listUsers) {
+    return listUsers[tmpUser];
+}
+
+function makeNewOne(nick, profile) {
+    userList = {};
+
+    userList[nick] = {
+        name: profile.name,
+        mName: profile.mName,
+        surname: profile.surname,
+        sSurname: profile.sSurname,
+        age: profile.age,
+        mail: profile.mail,
+        phone: profile.phone,
+        photoSrc: profile.photoSrc
+    };
+    localStorage.setItem("userList", JSON.stringify(userList));
+}
+
+
+>>>>>>> Stashed changes
 function principal() {
     profileEdit();
     (localStorage.getItem("userProfile") == null) ? googleFill(): userFill();

@@ -14,6 +14,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/dropzone.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -23,6 +24,7 @@
         <div class="text-center p-4" id="vista">
             <h2>Carrito de compras</h2>
             <hr class="my-1">
+<<<<<<< Updated upstream
         </div>
         <form id="tryBuy" method="get">
             <div class="row">
@@ -341,6 +343,121 @@
                 <div></div>
             </div>
         </div>
+=======
+        </div>
+        <form id="tryBuy" method="get">
+            <div class="row">
+                <div class="container p-5">
+                    <div class="row" id="buyed">
+
+                    </div>
+                </div>
+
+                <div class="container p-5">
+                    <div class="column">
+                        <p>Seleccionar un metodo de envío:</p>
+                        <div>
+                            <input type="radio" id="premium" name="drone" value="15">
+                            <label for="premium">Premium 2 a 5 días (15%)</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="express" name="drone" value="7">
+                            <label for="express">Express 5 a 8 días (7%)</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="standar" name="drone" value="5">
+                            <label for="standar">Standar 12 a 15 días (5%)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container p-5">
+                    <h4>Dirección de envío: </h4>
+                    <div id="alignShipping">
+                        <hr class="my-1">
+                        <p>País:</p>
+                        <select id="country" name="country">
+                        <option value="--">--</option>
+                        
+                    </select>&nbsp;&nbsp;
+                        <input type="text" name="direccion" id="dir" placeholder="Calle"><br><br>
+                        <input type="number" name="num" id="num" placeholder="Número">&nbsp;&nbsp;
+                        <input type="text" name="esquina" id="corner" placeholder="Esquina">
+                        <br>
+                        <br>
+                        <div>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Formas de pago</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Forma de pago</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <div class="row">
+                                                    <input type="radio" id="creditCard" name="modal" value="0">
+                                                    <label for="creditCard">&nbsp;Tarjeta de crédito</label><br>
+                                                    <div class="column">
+                                                        <input type="text" name="cardNumber" id="cardNumber" placeholder="Número de Tarjeta">
+                                                        <input type="text" name="expiration" id="expiration" placeholder="Vencimiento (MM/AA)">&nbsp;&nbsp;
+                                                        <input type="number" name="cvv" id="cvv" placeholder="Código CVV">
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <input type="radio" id="eBanking" name="modal" value="1">
+                                                    <label for="eBanking">&nbsp;Transferencia Bancaria</label><br>
+                                                    <div class="column">
+                                                        <input type="number" name="accountDir" id="accountDir" placeholder="Número de cuenta">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" id="submit" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-lg-2">
+                </div>
+                <div class="container p-5">
+                    <hr class="my-lg-2">
+                    <div class="column">
+                        <h4>Coste</h4>
+                        <div>
+                            <h4>Subtotal: <b id="subtotal"></b></h4>
+                            <h4>Envío: <b id="shipping"></b></h4>
+                            <h4>Total: <b id="total"></b></h4>
+                            <input type="submit" value="Comprar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div id="spinner-wrapper">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+>>>>>>> Stashed changes
     </main>
     <footer class="text-muted bg-light">
         <div class="container">

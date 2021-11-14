@@ -409,6 +409,32 @@ ul.navbar-nav {
     margin-right: 7%;
 }
 
+div.modal-body div div.row div.column {
+    width: 100%;
+}
+
+div.d-flex small.text-muted input[value=Borrar] {
+    background-color: #ed5656;
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(233, 95, 95, 0.4);
+    box-shadow: 0 10px 30px 0 rgba(233, 95, 95, 0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
 
 /*
 #prod-list-container {
