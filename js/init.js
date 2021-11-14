@@ -127,12 +127,8 @@ function profile() {
 //Logout function
 function logOut() {
     document.cookie = "username=" + returnUser() + "; expires=Thu, 18 Dec 2020 12:00:00 UTC; path=/";
-<<<<<<< Updated upstream
-    localStorage.clear();
-=======
     localStorage.removeItem("user");
     localStorage.removeItem("userProfile");
     localStorage.removeItem("gUserLog");
->>>>>>> Stashed changes
     location.href = "index.html";
 }
