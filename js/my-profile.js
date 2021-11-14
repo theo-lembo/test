@@ -62,20 +62,12 @@ function saveUserData() {
         "age": age.value,
         "mail": mail.value,
         "photoSrc": getIconUrl(document.getElementById("photoSrc").value),
-<<<<<<< Updated upstream
-        "phone": phone.value,
-    }
-    localStorage.setItem("userProfile", JSON.stringify(user));
-    profileEdit();
-    localStorage.removeItem("gUserLog");
-=======
         "phone": phone.value
     };
     localStorage.setItem("userProfile", JSON.stringify(user));
     profileEdit();
     localStorage.removeItem("gUserLog");
     listOfUsers();
->>>>>>> Stashed changes
     location.reload();
 }
 
@@ -125,10 +117,6 @@ function userFill() {
     mail.value = uMail;
     phone.value = uPhone;
     photo.value = uPhotoSrc;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 }
 /*------------------------------------------Change url of getavataaars.com------------------------------------------*/
 
@@ -136,13 +124,6 @@ function getIconUrl(src) {
     let temp = "";
 
     (src.slice(0, 24) === "https://getavataaars.com") ?
-
-<<<<<<< Updated upstream
-    temp = src.replace("https://getavataaars.com", "https://avataaars.io"): "";
-    return temp;
-}
-
-=======
     temp = src.replace("https://getavataaars.com", "https://avataaars.io"): temp = src;
     return temp;
 }
@@ -185,8 +166,6 @@ function makeNewOne(nick, profile) {
     localStorage.setItem("userList", JSON.stringify(userList));
 }
 
-
->>>>>>> Stashed changes
 function principal() {
     profileEdit();
     (localStorage.getItem("userProfile") == null) ? googleFill(): userFill();
